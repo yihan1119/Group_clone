@@ -19,7 +19,6 @@ from multiprocessing import Pool
 from collections import defaultdict
 from scipy import sparse, io
 from scipy.sparse import csr_matrix
-from multiprocessing import Pool
 from collections import defaultdict
 
 print("start analyzing.", file=sys.stderr, flush=True)
