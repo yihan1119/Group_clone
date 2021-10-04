@@ -9,9 +9,3 @@
 * Pandas (0.25 +)
 * Scipy (1.1 +)
 * Matplotlib (3.3 +)
-
-## Contributor
-* First Author: Yihan Wang Yihan.Wang@UTSouthwestern.edu
-* Corresponding Author: Gary Hon Gary.Hon@UTSouthwestern.edu
-
-## How to cite
