@@ -81,7 +81,7 @@ def main():
 
     parser.add_argument(
         '-g', '--group', dest='group', required=True,
-        type=int,
+        type=str,
         help='specify the group of cells to analyze: clone or non-clone'
     )
 
