@@ -2,24 +2,47 @@
 import os
 import re
 import sys
+print(sys.executable, file=sys.stderr, flush=True)
+print(sys.path, file=sys.stderr, flush=True)
+print(sys.version, file=sys.stderr, flush=True)
+
 import collections
 import argparse
-import tables
+#import tables
 import itertools
 import matplotlib
-import numba
+import glob
+import math
 
+
+import scipy.io
 import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
 import numpy as np
 import pandas as pd
+import scipy
 import scipy.stats as stats
 import scipy.sparse as sp_sparse
+import scanpy as sc 
+import scanpy.external as sce
 
-from multiprocessing import Pool
 from collections import defaultdict
 from scipy import sparse, io
+
+import scanpy.external as sce
+import matplotlib
+
 from scipy.sparse import csr_matrix
-from collections import defaultdict
+from multiprocessing import Pool
+#from matplotlib_venn import venn2, venn2_circles
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 42
+
+print('numpy', np.__version__, file=sys.stderr, flush=True)
+print('pandas', pd.__version__, file=sys.stderr, flush=True)
+print('scipy', scipy.__version__, file=sys.stderr, flush=True)
+print('matplotlib', matplotlib.__version__, file=sys.stderr, flush=True)
+print('scanpy', sc.__version__, file=sys.stderr, flush=True)
 
 print("start analyzing.", file=sys.stderr, flush=True)
 
