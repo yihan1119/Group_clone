@@ -14,5 +14,5 @@
 GEO accession: GSE185995
 
 ## Contact 
-* Yihan Wang Yihan.Wang@UTSouthwestern.edu
-* Gary Hon Gary.Hon.UTSouthwestern.edu
+* Yihan Wang `Yihan.Wang@UTSouthwestern.edu`
+* Gary Hon `Gary.Hon@UTSouthwestern.edu`
