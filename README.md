@@ -15,6 +15,6 @@
 ## Original Fastq Files
 GEO accession: [GSE185995]
 
-## Contact 
-* Yihan Wang `Yihan.Wang@UTSouthwestern.edu`
-* Gary Hon `Gary.Hon@UTSouthwestern.edu`
+## Contributors 
+* First Author: Yihan Wang `Yihan.Wang@UTSouthwestern.edu`
+* Corresponding Author: Gary Hon `Gary.Hon@UTSouthwestern.edu`
