@@ -13,7 +13,7 @@
 * Matplotlib (3.3 +)
 
 ## Original Fastq Files
-GEO accession: GSE185995
+GEO accession: [GSE185995]
 
 ## Contact 
 * Yihan Wang `Yihan.Wang@UTSouthwestern.edu`
