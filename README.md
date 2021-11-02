@@ -9,3 +9,10 @@
 * Pandas (0.25 +)
 * Scipy (1.1 +)
 * Matplotlib (3.3 +)
+
+## Original Fastq Files
+GEO accession: GSE185995
+
+## Contact 
+* Yihan Wang Yihan.Wang@UTSouthwestern.edu
+* Gary Hon Gary.Hon.UTSouthwestern.edu
