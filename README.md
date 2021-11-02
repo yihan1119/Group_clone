@@ -3,7 +3,7 @@
 ## Overview
 #### This repository described the scripts for identifying clones in single-cell CRISPR screens with multiplexed sgRNA barcodes. 
 
-![Over-view](./overview.png "Overview")
+![Over-view](./MISC/overview.png "Overview")
 
 ## Requirement
 * python (3.6 +)
