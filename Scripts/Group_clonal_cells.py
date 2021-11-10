@@ -37,7 +37,7 @@ def hypergeom_two_cell_sgrnas(array1,
                               cell_bc, 
                               k):
     
-    x = np.dot(array1, array2) -1
+    x = np.dot(array1, array2) - 1
     M = sgrna_num
     n = sum_df[cell_bc]
     N = sum_df[k]
@@ -54,7 +54,7 @@ def find_sgrna_overlap_rate_two_cells(array1,
     
     sgrna_in_cell1 = sum_df[cell_bc]
     sgrna_in_cell2 = sum_df[k]
-    intersection = np.dot(array1, array2) -1
+    intersection = np.dot(array1, array2) - 1
     union = sgrna_in_cell1 + sgrna_in_cell2 -intersection
     overlap_rate = intersection / union
 
