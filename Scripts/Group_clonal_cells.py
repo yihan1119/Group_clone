@@ -8,35 +8,19 @@ print(sys.version, file=sys.stderr, flush=True)
 
 import collections
 import argparse
-#import tables
 import itertools
 import matplotlib
-import glob
 import math
 
-
 import scipy.io
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
 import numpy as np
 import pandas as pd
 import scipy
 import scipy.stats as stats
 import scipy.sparse as sp_sparse
-import scanpy as sc 
-import scanpy.external as sce
 
 from collections import defaultdict
 from scipy import sparse, io
-
-import scanpy.external as sce
-import matplotlib
-
-from scipy.sparse import csr_matrix
-from multiprocessing import Pool
-#from matplotlib_venn import venn2, venn2_circles
-matplotlib.rcParams['pdf.fonttype'] = 42
-matplotlib.rcParams['ps.fonttype'] = 42
 
 print('numpy', np.__version__, file=sys.stderr, flush=True)
 print('pandas', pd.__version__, file=sys.stderr, flush=True)
@@ -46,15 +30,28 @@ print('scanpy', sc.__version__, file=sys.stderr, flush=True)
 
 print("start analyzing.", file=sys.stderr, flush=True)
 
-def hypergeom_two_cell_sgrnas(array1, array2, sum_df, sgrna_num, cell_bc, k):
+def hypergeom_two_cell_sgrnas(array1, 
+                              array2, 
+                              sum_df, 
+                              sgrna_num, 
+                              cell_bc, 
+                              k):
+    
     x = np.dot(array1, array2) -1
     M = sgrna_num
     n = sum_df[cell_bc]
     N = sum_df[k]
     p_val = stats.hypergeom.sf(x, M, n, N)
+    
     return p_val
 
-def find_sgrna_overlap_rate_two_cells(array1, array2, sum_df, sgrna_num, cell_bc, k):
+def find_sgrna_overlap_rate_two_cells(array1, 
+                                      array2,
+                                      sum_df,
+                                      sgrna_num,
+                                      cell_bc,
+                                      k):
+    
     sgrna_in_cell1 = sum_df[cell_bc]
     sgrna_in_cell2 = sum_df[k]
     intersection = np.dot(array1, array2) -1
@@ -63,12 +60,15 @@ def find_sgrna_overlap_rate_two_cells(array1, array2, sum_df, sgrna_num, cell_bc
 
     return overlap_rate
 
-def group_clone_overlap(sgrna_df, cutoff):
+def group_clone_overlap(sgrna_df, 
+                        cutoff):
+    
     counter = 0
     clone_dict = defaultdict(list)
     clone_pval = []
     sgrna_num, cell_num = sgrna_df.shape
     sum_df = sgrna_df.sum(axis = 0)
+    
     for i in np.arange(0, cell_num):
         cell_bc = sgrna_df.columns[i]
         sgrna_pattern = sgrna_df[cell_bc].values.astype(int)
@@ -78,7 +78,14 @@ def group_clone_overlap(sgrna_df, cutoff):
         bool_found_overlap = False
         for k in clone_dict.keys():
             sgrna_pattern_uniq = sgrna_df[k].values.astype(int)
-            pval = hypergeom_two_cell_sgrnas(sgrna_pattern, sgrna_pattern_uniq, sum_df, sgrna_num, cell_bc, k)
+            
+            pval = hypergeom_two_cell_sgrnas(sgrna_pattern, 
+                                             sgrna_pattern_uniq, 
+                                             sum_df, 
+                                             sgrna_num, 
+                                             cell_bc, 
+                                             k)
+            
             if pval <= (cutoff/100): #same clone
                 bool_found_overlap = True
                 clone_dict[k].append(cell_bc)
@@ -96,13 +103,16 @@ def group_clone_overlap(sgrna_df, cutoff):
     return clone_dict, clone_pval   
 
 
-def group_clone_hypergeom(sgrna_df, cutoff):
+def group_clone_hypergeom(sgrna_df, 
+                          cutoff):
+    
     counter = 0
     clone_dict = defaultdict(list)
     clone_pval = []
     sgrna_num, cell_num = sgrna_df.shape
     sum_df = sgrna_df.sum(axis = 0)
     pval_threshold = (cutoff/((cell_num)*(cell_num)/2)) #bonferroni correction 
+    
     for i in np.arange(0, cell_num):
         cell_bc = sgrna_df.columns[i]
         sgrna_pattern = sgrna_df[cell_bc].values.astype(int)
@@ -112,7 +122,14 @@ def group_clone_hypergeom(sgrna_df, cutoff):
         bool_found_overlap = False
         for k in clone_dict.keys():
             sgrna_pattern_uniq = sgrna_df[k].values.astype(int)
-            pval = hypergeom_two_cell_sgrnas(sgrna_pattern, sgrna_pattern_uniq, sum_df, sgrna_num, cell_bc, k)
+            
+            pval = hypergeom_two_cell_sgrnas(sgrna_pattern,
+                                             sgrna_pattern_uniq,
+                                             sum_df,
+                                             sgrna_num,
+                                             cell_bc,
+                                             k)
+            
             if pval <= pval_threshold: #same clone
                 bool_found_overlap = True
                 clone_dict[k].append(cell_bc)
@@ -172,11 +189,15 @@ def main():
     sgrna_df = pd.read_pickle(SGRNA_DF)
     print("loaded sgrna df.", file=sys.stderr, flush=True)
     sgRNA_df_bool = sgrna_df > 0
+    
     print("start calculte unique clones", file=sys.stderr, flush=True)
     if METHOD == 'overlap_rate':
-        clone_dict, clone_pval = group_clone_overlap(sgRNA_df_bool, CUTOFF)
+        clone_dict, clone_pval = group_clone_overlap(sgRNA_df_bool, 
+                                                     CUTOFF)
+        
     if METHOD == 'hypergeom_test':
-        clone_dict, clone_pval = group_clone_hypergeom(sgRNA_df_bool, CUTOFF)
+        clone_dict, clone_pval = group_clone_hypergeom(sgRNA_df_bool, 
+                                                       CUTOFF)
     else: 
         print('method requires eiither overlap_rate or hypergeom_test.', file=sys.stderr, flush=True)
     
