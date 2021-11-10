@@ -8,35 +8,21 @@ print(sys.version, file=sys.stderr)
 
 import collections
 import argparse
-#import tables
 import itertools
 import matplotlib
-import glob
 import math
 
-
 import scipy.io
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
 import numpy as np
 import pandas as pd
 import scipy
 import scipy.stats as stats
 import scipy.sparse as sp_sparse
-import scanpy as sc 
-import scanpy.external as sce
 
 from collections import defaultdict
 from scipy import sparse, io
-
-import scanpy.external as sce
-import matplotlib
-
 from scipy.sparse import csr_matrix
-from multiprocessing import Pool
-#from matplotlib_venn import venn2, venn2_circles
-matplotlib.rcParams['pdf.fonttype'] = 42
-matplotlib.rcParams['ps.fonttype'] = 42
+
 
 print('numpy', np.__version__, file=sys.stderr)
 print('pandas', pd.__version__, file=sys.stderr)
@@ -44,7 +30,9 @@ print('scipy', scipy.__version__, file=sys.stderr)
 print('matplotlib', matplotlib.__version__, file=sys.stderr)
 print('scanpy', sc.__version__, file=sys.stderr)
 
+
 def load_clone_tree(clone_dict_file):
+    
     Clone_dict = {}
     with open(clone_dict_file) as f:
         first_line = f.readline()
@@ -55,6 +43,7 @@ def load_clone_tree(clone_dict_file):
                 clone_IDs = clones.replace("'[", "").replace("]',", "").replace("'", "").strip(' \n')
                 individual_clone_ID = clone_IDs.split(', ')
                 Clone_dict.update({ID.strip("'") : individual_clone_ID})
+    
     return Clone_dict
 
 
@@ -89,7 +78,8 @@ def main():
         '-o', '--output', dest='output', required=True,
         type=str,
         help='specify the output directory'
-    )  
+    )
+    
     args = parser.parse_args()
     SGRNA_DF = args.sgRNA_df
     Clone_dict_file = args.clone_tree
@@ -129,8 +119,14 @@ def main():
     
     #randomly select cells 
     All_sgRNA_cell = set(All_cell_ID_list).intersection(set(cells_with_sgRNA))
-    Random_cell_ID_list = np.random.choice(All_sgRNA_cell, size=NUMBER, replace=False)
-    All_sgrna_overlap_df = pd.DataFrame(data=None, index=Random_cell_ID_list, columns=Random_cell_ID_list)
+    Random_cell_ID_list = np.random.choice(All_sgRNA_cell, 
+                                           size=NUMBER, 
+                                           replace=False)
+    
+    All_sgrna_overlap_df = pd.DataFrame(data=None, 
+                                        index=Random_cell_ID_list, 
+                                        columns=Random_cell_ID_list)
+   
     print('The size of randomly selected cells overlap rate df is: ' + str(All_sgrna_overlap_df.shape), file=sys.stderr, flush=True)
 
     #find the sgRNAs in each randomly selected cells 
@@ -142,10 +138,15 @@ def main():
     counter = 0
     for i in range(len(Random_cell_ID_list)):
         cell1_region = set(All_clone_cells_sgRNA_dict[All_sgrna_overlap_df.columns[i]][0])
+        
         for j in range(len(Random_cell_ID_list)):
             cell2_region = set(All_clone_cells_sgRNA_dict[All_sgrna_overlap_df.columns[j]][0])
+            
             if math.isnan(All_sgrna_overlap_df.iloc[j, i]) == True:
-                pval = stats.hypergeom.sf(len(cell1_region.intersection(cell2_region))-1, sgrna_num, len(cell1_region), len(cell2_region))
+                pval = stats.hypergeom.sf(len(cell1_region.intersection(cell2_region))-1, 
+                                          sgrna_num, 
+                                          len(cell1_region), 
+                                          len(cell2_region))
                 
                 All_sgrna_overlap_df.iloc[j, i] = pval
                 All_sgrna_overlap_df.iloc[i, j] = pval
