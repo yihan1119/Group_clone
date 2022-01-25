@@ -6,7 +6,7 @@
 ![Over-view](./MISC/overview.png "Overview")
 
 ## Requirement
-* python (3.6 +)
+* Python (3.6 +)
 * Numpy (1.16 +)
 * Pandas (0.25 +)
 * Scipy (1.1 +)
