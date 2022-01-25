@@ -15,6 +15,22 @@
 ## Original Fastq Files
 GEO accession: [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE185995)
 
+## Pipelines 
+### Step 1: Mapping and pre-processing 
+* Map the transcriptome libraries.
+* Map the sgRNA libraries. 
+* Filter out the doublet cells.
+* Generate a pandas dataframe of sgRNA library with singlets only (rows: sgRNA sequence / columns: cell IDs).
+* Save as python pickle file.
+
+### Step 2: Group clone analysis 
+* Run the group clone script on shell.
+* ![log.group_clones.sh](./Scripts/log.group_clones.sh "log.group_clones.sh")
+
+### Step 3: Clonality visualization
+* Read the clonal dictionary from jupyter lab and visualize clonality
+* ![Visualize_clonality](./Notebooks/Visualize_clonality-Github.ipynb "Visualize_clonality")
+
 ## Contributors 
 * First Author: Yihan Wang `Yihan.Wang@UTSouthwestern.edu`
 * Corresponding Author: Gary Hon `Gary.Hon@UTSouthwestern.edu`
