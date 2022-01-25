@@ -13,7 +13,7 @@
 * Matplotlib (3.3 +)
 
 ## Original Fastq Files
-GEO accession: GSE185995
+GEO accession: [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE185995)
 
 ## Contributors 
 * First Author: Yihan Wang `Yihan.Wang@UTSouthwestern.edu`
