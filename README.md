@@ -25,11 +25,11 @@ GEO accession: [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GS
 
 ### Step 2: Group clone analysis 
 * Run the group clone script on shell.
-* ![log.group_clones.sh](./Scripts/log.group_clones.sh "log.group_clones.sh")
+* [Group clones](./Scripts/log.group_clones.sh "log.group_clones.sh")
 
 ### Step 3: Clonality visualization
 * Read the clonal dictionary from jupyter lab and visualize clonality
-* ![Visualize_clonality](./Notebooks/Visualize_clonality-Github.ipynb "Visualize_clonality")
+* [Visualize clonality](./Notebooks/Visualize_clonality-Github.ipynb "Visualize_clonality")
 
 ## Contributors 
 * First Author: Yihan Wang `Yihan.Wang@UTSouthwestern.edu`
