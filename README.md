@@ -24,7 +24,7 @@ GEO accession: [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GS
 * Save as python pickle file. (Example file can be found in the supplementary file session of [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE185995): GSE185995_sgRNA_df_adj_regex.pkl.gz)
 
 ### Step 2: Group clones analysis 
-* Run the group clones script on [shell](./Scripts/log.group_clones.sh).
+* Perform the [group clones analysis](./Scripts/Group_clonal_cells.py) on [shell](./Scripts/log.group_clones.sh).
 
 ### Step 3: Clonality visualization
 * Read the clonal dictionary file with jupyter lab and [visualize clonality](./Notebooks/Visualize_clonality-Github.ipynb).
