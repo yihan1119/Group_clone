@@ -23,5 +23,5 @@ set CUTOFF=0.05
 ./Group_clonal_cells.py\
     -s $sgRNA_df\
     -c $CUTOFF\
-    -o ./Clone_tree.$CUTOFF.txt \
-    -op ./Clone_pval.$CUTOFF.txt
+    -o ./YWsg1P1-clone_tree.$CUTOFF.txt \
+    -op ./YWsg1P1-clone_pval.$CUTOFF.txt
