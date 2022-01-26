@@ -17,7 +17,7 @@ echo 'Program is running with the current python version:'
 which python
 python --version
 
-set sgRNA_df=
+set sgRNA_df=GSE185995_sgRNA_df_adj_regex.pkl.gz
 set CUTOFF=0.05
 
 ./Group_clonal_cells.py\
