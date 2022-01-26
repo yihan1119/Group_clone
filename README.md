@@ -17,9 +17,9 @@ GEO accession: [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GS
 
 ## Pipelines 
 ### Step 1: Mapping and pre-processing 
-* Map the transcriptome libraries.
-* Map the sgRNA libraries. 
-* Filter out the doublet cells.
+* Map the [transcriptome](./Scripts/File_prep/log.10x_map.sh) libraries.
+* Map the [sgRNA](./Scripts/File_prep/log_sgRNA_map.sh) libraries and [filter](./Scripts/File_prep/log.filter_umi.sh). 
+* Filter out the [experimental doublet cells](./Scripts/File_prep/Filter_HTO_nova.ipynb).
 * Generate a pandas dataframe of sgRNA library with singlets only (rows: sgRNA sequence / columns: cell IDs).
 * Save as python pickle file. (Example file can be found in the supplementary file session of [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE185995): GSE185995_sgRNA_df_adj_regex.pkl.gz)
 
