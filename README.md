@@ -20,8 +20,8 @@ GEO accession: [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GS
 * Map the [transcriptome](./Scripts/File_prep/log.10x_map.sh) libraries.
 * Map the [sgRNA](./Scripts/File_prep/log_sgRNA_map.sh) libraries and [filter](./Scripts/File_prep/log.filter_umi.sh). 
 * Filter out the [experimental doublet cells](./Scripts/File_prep/Filter_HTO_nova.ipynb).
-* Generate a pandas dataframe of sgRNA library with singlets only (rows: sgRNA sequence / columns: cell IDs).
-* Save as python pickle file. (Example file can be found in the supplementary file session of [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE185995): GSE185995_sgRNA_df_adj_regex.pkl.gz)
+* Generate a pandas dataframe of sgRNA library (rows: sgRNA sequence / columns: cell IDs) and save as [python pickle file](./Scripts/File_prep/generate_sgrna_df_regex.ipynb). 
+* Example file can be found in the supplementary file session of [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE185995): GSE185995_sgRNA_df_adj_regex.pkl.gz
 
 ### Step 2: Group clones analysis 
 * Perform the [group clones analysis](./Scripts/Group_clonal_cells.py) on [shell](./Scripts/log.group_clones.sh).
