@@ -29,6 +29,9 @@ GEO accession: [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GS
 ### Step 3: Clonality visualization
 * Read the clonal dictionary file with jupyter lab and [visualize clonality](./Notebooks/Visualize_clonality-Github.ipynb).
 
+## How to cite
+[Computational identification of clonal cells in single-cell CRISPR screens](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-022-08359-1)
+
 ## Contributors 
 * First Author: Yihan Wang `Yihan.Wang@UTSouthwestern.edu`
 * Corresponding Author: Gary Hon `Gary.Hon@UTSouthwestern.edu`
