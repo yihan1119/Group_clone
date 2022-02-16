@@ -30,8 +30,8 @@ GEO accession: [GSE185995](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GS
 * Read the clonal dictionary file with jupyter lab and [visualize clonality](./Notebooks/Visualize_clonality-Github.ipynb).
 
 ## How to cite
-Wang, Y., Xie, S., Armendariz, D., Hon, GC. [Computational identification of clonal cells in single-cell CRISPR screens] BMC Genomics 23, 135 (2022)
-(https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-022-08359-1)
+Wang, Y., Xie, S., Armendariz, D., Hon, GC. Computational identification of clonal cells in single-cell CRISPR screens. BMC Genomics 23, 135 (2022)
+[Link to paper](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-022-08359-1)
 
 ## Contributors 
 * First Author: Yihan Wang `Yihan.Wang@UTSouthwestern.edu`
